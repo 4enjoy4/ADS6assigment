@@ -16,6 +16,17 @@ public class MyGraph {
         adgList[source].add(destination);
         adgList[destination].add(source);
     }
+    public void removeEdge(int source, int destination){
+        validateVertex(source);
+        validateVertex(destination);
+        adgList[source].remove(destination);
+        adgList[destination].remove(source);
+    }
+    public boolean HaveEdge(int source, int destination){
+        validateVertex(source);
+        validateVertex(destination);
+        return adgList[source].contains(destination);
+    }
     public void printEdge(){
         for(int i = 0; i < numOfVertices; i++){
             System.out.println("Vertex " + i +" connected to: ");
@@ -25,6 +36,7 @@ public class MyGraph {
             System.out.println();
         }
     }
+
     private void validateVertex(int index){
         if(index < 0 || index > numOfVertices){
             throw new IllegalArgumentException("Vertex "+ index + " is out of range");

@@ -7,5 +7,6 @@ public class Main {
         myGraph.addEdge(4, 5);
         myGraph.addEdge(6, 7);
         myGraph.printEdge();
+        System.out.println(myGraph.HaveEdge(2,3));
     }
 }
