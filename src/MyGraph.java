@@ -27,6 +27,10 @@ public class MyGraph {
         validateVertex(destination);
         return adgList[source].contains(destination);
     }
+    public LinkedList<Integer> getNeighbor(int vertex){
+        validateVertex(vertex);
+        return adgList[vertex];
+    }
     public void printEdge(){
         for(int i = 0; i < numOfVertices; i++){
             System.out.println("Vertex " + i +" connected to: ");
