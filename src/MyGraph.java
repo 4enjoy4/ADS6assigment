@@ -10,7 +10,12 @@ public class MyGraph {
             adgList[i] = new LinkedList<>();
         }
     }
-
+    public void addEdge(int source, int destination){
+        validateVertex(source);
+        validateVertex(destination);
+        adgList[source].add(destination);
+        adgList[destination].add(source);
+    }
     private void validateVertex(int index){
         if(index < 0 || index > numOfVertices){
             throw new IllegalArgumentException("Vertex "+ index + " is out of range");
