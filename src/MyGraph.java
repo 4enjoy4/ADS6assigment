@@ -38,18 +38,18 @@ public class MyGraph {
     }
     private void DFSHelper(int vertex, boolean[] visited){
         visited[vertex] = true;
-        System.out.println(vertex + " ");
+        System.out.print(vertex + " ");
         for(int neighbor : adgList[vertex]){
-            if(!visited[vertex]){
+            if(!visited[neighbor]){
                 DFSHelper(neighbor, visited);
             }
         }
     }
     public void printEdge(){
         for(int i = 0; i < numOfVertices; i++){
-            System.out.println("Vertex " + i +" connected to: ");
+            System.out.print("Vertex " + i +" connected to: ");
             for(int neighbor : adgList[i]){
-                System.out.println(neighbor + " ");
+                System.out.print(neighbor + " ");
             }
             System.out.println();
         }
