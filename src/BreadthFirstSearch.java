@@ -3,10 +3,12 @@ import java.util.*;
 public class BreadthFirstSearch<V> {
     private WeightedGraph<V> graph;
 
+    // Constructs a BreadthFirstSearch object with the specified graph.
     public BreadthFirstSearch(WeightedGraph<V> graph) {
         this.graph = graph;
     }
 
+    // Performs a breadth-first search starting from the specified source vertex.
     public void breadthFirstSearch(Vertex<V> source) {
         Set<Vertex<V>> visited = new HashSet<>();
         Queue<Vertex<V>> queue = new LinkedList<>();
@@ -29,4 +31,5 @@ public class BreadthFirstSearch<V> {
         }
     }
 }
+
 
