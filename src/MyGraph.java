@@ -37,7 +37,7 @@ public class MyGraph {
     }
 
     // Returns the neighbors of the specified vertex.
-    public LinkedList<Integer> getNeighbors(int vertex) {
+    public LinkedList<Integer> getNeighbor(int vertex) {
         validateVertex(vertex);
         return adgList[vertex];
     }
@@ -61,7 +61,7 @@ public class MyGraph {
     }
 
     // Prints the edges of each vertex in the graph.
-    public void printEdges() {
+    public void printEdge() {
         for (int i = 0; i < numOfVertices; i++) {
             System.out.print("Vertex " + i + " connected to: ");
             for (int neighbor : adgList[i]) {

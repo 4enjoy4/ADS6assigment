@@ -11,7 +11,7 @@ public class Main {
         myGraph.addEdge(6, 7);
         myGraph.addEdge(0, 2);
         myGraph.printEdge();
-        System.out.println(myGraph.HaveEdge(2,3));
+        System.out.println(myGraph.hasEdge(2,3));
         System.out.println(myGraph.getNeighbor(2));
         myGraph.DFS(2);
         WeightedGraph<String> graph = new WeightedGraph<>();
