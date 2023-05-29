@@ -1,4 +1,4 @@
-public class Edge<T extends Vertex<?>> {
+public class Edge<T> {
     private T destination;
     private double weight;
 
@@ -14,16 +14,5 @@ public class Edge<T extends Vertex<?>> {
     public double getWeight() {
         return weight;
     }
-}
-
-// Search class (base class for different search algorithms)
-abstract class Search<T extends Vertex<?>> {
-    protected WeightedGraph<T> graph;
-
-    public Search(WeightedGraph<T> graph) {
-        this.graph = graph;
-    }
-
-    public abstract void search(T startVertex);
 }
 

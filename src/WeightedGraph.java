@@ -5,51 +5,28 @@ import java.util.Map;
 
 import java.util.*;
 
+
 public class WeightedGraph<V> {
-    private Map<Vertex<V>, List<Edge<Vertex<V>>>> map;
+    private Map<Vertex<V>, List<Edge<Vertex<V>>>> adjacencyList;
 
     public WeightedGraph() {
-        map = new HashMap<>();
+        adjacencyList = new HashMap<>();
     }
 
     public void addVertex(Vertex<V> vertex) {
-        map.put(vertex, new ArrayList<>());
+        adjacencyList.putIfAbsent(vertex, new ArrayList<>());
     }
 
     public void addEdge(Vertex<V> source, Vertex<V> destination, double weight) {
-        validateVertex(source);
-        validateVertex(destination);
-
-        List<Edge<Vertex<V>>> edges = map.get(source);
-        edges.add(new Edge<>(destination, weight));
-
-        // If it's a directed graph, comment the line below
-        map.get(destination).add(new Edge<>(source, weight));
+        adjacencyList.computeIfAbsent(source, k -> new ArrayList<>()).add(new Edge<>(destination, weight));
+        adjacencyList.computeIfAbsent(destination, k -> new ArrayList<>()).add(new Edge<>(source, weight));
     }
 
     public List<Edge<Vertex<V>>> getNeighbors(Vertex<V> vertex) {
-        validateVertex(vertex);
-        return map.get(vertex);
+        return adjacencyList.getOrDefault(vertex, new ArrayList<>());
     }
 
-    public Set<Vertex<V>> getVertices() {
-        return map.keySet();
-    }
-
-    public void printGraph() {
-        for (Vertex<V> vertex : map.keySet()) {
-            System.out.print("Vertex " + vertex + " connected to: ");
-            List<Edge<Vertex<V>>> edges = map.get(vertex);
-            for (Edge<Vertex<V>> edge : edges) {
-                System.out.print(edge.getDestination() + " (Weight: " + edge.getWeight() + ") ");
-            }
-            System.out.println();
-        }
-    }
-
-    private void validateVertex(Vertex<V> vertex) {
-        if (!map.containsKey(vertex)) {
-            throw new IllegalArgumentException("Vertex " + vertex + " is not in the graph.");
-        }
+    public List<Vertex<V>> getVertices() {
+        return new ArrayList<>(adjacencyList.keySet());
     }
 }

@@ -1,32 +1,37 @@
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class Vertex<V> {
     private V data;
-    private Map<Vertex<V>, Double> adjacentVertices;
 
     public Vertex(V data) {
         this.data = data;
-        adjacentVertices = new HashMap<>();
     }
 
     public V getData() {
         return data;
     }
 
-    public void addAdjacentVertex(Vertex<V> destination, double weight) {
-        adjacentVertices.put(destination, weight);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vertex<?> vertex = (Vertex<?>) o;
+        return Objects.equals(data, vertex.data);
     }
 
-    public Map<Vertex<V>, Double> getAdjacentVertices() {
-        return adjacentVertices;
+    @Override
+    public int hashCode() {
+        return Objects.hash(data);
     }
 
     @Override
     public String toString() {
-        return String.valueOf(data);
+        return data.toString();
     }
 }
+
 
